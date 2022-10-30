@@ -31,6 +31,11 @@
                       <th>No.</th>
                       <th>Option</th>
                       <th>Name</th>
+                      <th>ans_1</th>
+                      <th>ans_2</th>
+                      <th>ans_3</th>
+                      <th>ans_4</th>
+                      <th>correct_ans</th>
                       <th>Category</th>
                       <th>Created At</th>
                     </tr>
@@ -38,7 +43,7 @@
                   <tbody>
                       <?php
                         $i = 1;
-                        $sql = "SELECT question_tbl.id, question_tbl.question, question_tbl.created_at, category_tbl.name AS category FROM question_tbl INNER JOIN category_tbl ON question_tbl.category_id = category_tbl.id WHERE question_tbl.deleted_at IS NULL ORDER BY question_tbl.created_at DESC";
+                        $sql = "SELECT question_tbl.id, question_tbl.question,question_tbl.ans_1, question_tbl.ans_2, question_tbl.ans_3, question_tbl.ans_4, question_tbl.correct_ans, question_tbl.created_at, category_tbl.name AS category FROM question_tbl INNER JOIN category_tbl ON question_tbl.category_id = category_tbl.id WHERE question_tbl.deleted_at IS NULL ORDER BY question_tbl.created_at DESC";
                         $res = mysqli_query($con, $sql) or die("PC_ERROR_2: MYSQL SELECT QUERY ERROR");
                         while($row = mysqli_fetch_assoc($res)){
                           ?>
@@ -49,6 +54,11 @@
                                   <a href="question_delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i></a>
                                 </td>
                                 <td><?php echo $row['question']; ?></td>
+                                <td><?php echo $row['ans_1']; ?></td>
+                                <td><?php echo $row['ans_2']; ?></td>
+                                <td><?php echo $row['ans_3']; ?></td>
+                                <td><?php echo $row['ans_4']; ?></td>
+                                <td><?php echo $row['correct_ans']; ?></td>
                                 <td><?php echo $row['category']; ?></td>
                                 <td><?php echo $row['created_at']; ?></td>
                               </tr>
