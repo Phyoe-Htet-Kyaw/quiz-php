@@ -44,62 +44,40 @@
                         $category_id = $_POST['category_id'];
                         if($name == ""){
                           echo "<p class='alert alert-danger'>Question must be entered!</p>";
-                        }
-                        else {
-                            $question_sql = "UPDATE question_tbl SET question = '$name', updated_at = '$timestamp' WHERE id=$id";
-                            $question_res = mysqli_query($con, $question_sql) or die("MYSQL INSERT QUERY ERROR!");
+                        }else{
                           if($ans1 == "") {
                                 echo "<p class='alert alert-danger'>Answer1 must be entered!</p>";
-                          } else {
-                                $ans1_sql = "UPDATE question_tbl SET ans_1 = '$ans1', updated_at = '$timestamp' WHERE id=$id";
-                                $ans1_res = mysqli_query($con, $ans1_sql) or die("MYSQL INSERT QUERY ERROR!");
-                          }
-                                if($ans2 == "") {
-                                  echo "<p class='alert alert-danger'>Answer2 must be entered!</p>";
-                                } else {
-                                  $ans2_sql = "UPDATE question_tbl SET ans_2 = '$ans2', updated_at = '$timestamp' WHERE id=$id";
-                                  $ans2_res = mysqli_query($con, $ans2_sql) or die("MYSQL INSERT QUERY ERROR!");
-                                  if($ans3 == "") {
-                                        echo "<p class='alert alert-danger'>Answer1 must be entered!</p>";
-                                  } 
-                                  else {
-                                        $ans3_sql = "UPDATE question_tbl SET ans_3 = '$ans3', updated_at = '$timestamp' WHERE id=$id";
-                                        $ans3_res = mysqli_query($con, $ans3_sql) or die("MYSQL INSERT QUERY ERROR!");
-                                    if($ans4 == "") {
+                          }else{
+                            if($ans2 == "") {
+                              echo "<p class='alert alert-danger'>Answer2 must be entered!</p>";
+                            }else{
+                              if($ans3 == ""){
+                                    echo "<p class='alert alert-danger'>Answer1 must be entered!</p>";
+                              }else{
+                                if($ans4 == "") {
+                                      echo "<p class='alert alert-danger'>Answer2 must be entered!</p>";
+                                }else{
+                                    if($correct_ans == "") {
                                           echo "<p class='alert alert-danger'>Answer2 must be entered!</p>";
-                                    } else {
-                                          $ans4_sql = "UPDATE question_tbl SET ans_4 = '$ans4', updated_at = '$timestamp' WHERE id=$id";
-                                          $ans4_res = mysqli_query($con, $ans4_sql) or die("MYSQL INSERT QUERY ERROR!");
-                                        if($correct_ans == "") {
-                                              echo "<p class='alert alert-danger'>Answer2 must be entered!</p>";
-                                        } else {
-                                              $correct_ans_sql = "UPDATE question_tbl SET correct_ans = '$correct_ans', updated_at = '$timestamp' WHERE id=$id";
-                                              $correct_ans_res = mysqli_query($con, $correct_ans_sql) or die("MYSQL INSERT QUERY ERROR!");
-                                        }
-                            
-                                          if($category_id == ""){
-                                                echo "<p class='alert alert-danger'>Category must be choosed!</p>";
-                                          }
-                                          else{
-                                            $sql = "UPDATE question_tbl SET question = '$name', category_id = '$category_id', updated_at = '$timestamp' WHERE id=$id"; 
-                                            $stmt = mysqli_query($con, $sql) or die("MYSQL INSERT QUERY ERROR!");
-                                            echo "<script>location.href='question_index.php'</script>";
-
-                                          
-                                          }
-                                        }
-                                    }
+                                    }else{
+                                      if($category_id == ""){
+                                        echo "<p class='alert alert-danger'>Category must be choosed!</p>";
+                                      }else{
+                                        $sql = "UPDATE question_tbl SET question = '$name', ans_1='$ans1', ans_2='$ans2', ans_3='$ans3', ans_4='$ans4', correct_ans='$correct_ans',  category_id = '$category_id', updated_at = '$timestamp' WHERE id=$id"; 
+                                        $stmt = mysqli_query($con, $sql) or die("MYSQL INSERT QUERY ERROR!");
+                                        echo "<script>location.href='question_index.php'</script>";
+                                      }
+                                    }  
                                   }
                                 }
+                              }
+                            }   
                           }
                         }
-                //     }   
-                // }
-                //   }
-              }
-                else {
-                echo "<script>location.href='question_index.php'</script>";
-              }
+                    }
+                }else{
+                  echo "<script>location.href='question_index.php'</script>";
+                }
             ?>
             <form action="" method="post">
                 <div class="form-group">
