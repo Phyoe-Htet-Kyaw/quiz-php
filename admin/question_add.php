@@ -27,18 +27,40 @@
             <?php  
                 if(isset($_POST['submit'])):
                     $name = $_POST['question_name'];
+                    $ans_1 = $_POST['answer_one'];
+                    $ans_2 = $_POST['answer_two'];
+                    $ans_3 = $_POST['answer_three'];
+                    $ans_4 = $_POST['answer_four'];
+                    $correct_answer = $_POST['correct_answer'];
                     $category_id = $_POST['category_id'];
-                    if($name == ""):
-                        echo "<p class='alert alert-danger'>Question must be entered!</p>";
-                    else:
-                        if($category_id == ""):
-                            echo "<p class='alert alert-danger'>Category must be choosed!</p>";
-                        else:
-                            $sql = "INSERT INTO question_tbl (question, category_id, created_at) VALUES ('$name', '$category_id', '$timestamp')";
-                            $stmt = mysqli_query($con, $sql) or die("MYSQL INSERT QUERY ERROR!");
-                                echo "<script>location.href='question_index.php'</script>";
-                        endif;
-                    endif;
+                      if($name == ""){
+                        echo "<p class='alert alert-danger'>Name must be entered!</p>";
+                      }else{
+                        if($ans_1 == ""){
+                          echo "<p class='alert alert-danger'>Answer one must be entered!</p>";
+                        }else{
+                          if($ans_2 == ""){
+                            echo "<p class='alert alert-danger'>Answer two must be entered!</p>";
+                          }else{
+                            if($ans_3 == ""){
+                              echo "<p class='alert alert-danger'>Answer three must be entered!</p>";
+                            }else{
+                              if($ans_4 == ""){
+                                echo "<p class='alert alert-danger'>Answer four must be entered!</p>";
+                              }else{
+                                if($correct_answer == ""){
+                                  echo "<p class='alert alert-danger'>Correct answer must be entered!</p>";
+                                }else{
+                                  $sql = "INSERT INTO question_tbl (question, ans_1, ans_2, ans_3, ans_4, correct_ans, category_id, created_at) VALUES ('$name','$ans_1', '$ans_2', '$ans_3', '$ans_4', '$correct_answer', '$category_id', '$timestamp')";
+                                  echo $sql;
+                                  $stmt = mysqli_query($con, $sql) or die("MYSQL INSERT QUERY ERROR!");
+                                  echo "<script>location.href='question_index.php'</script>";
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                 endif;
             ?>
             <form action="" method="post">
@@ -63,8 +85,8 @@
                     <input type="text" class="form-control form-control-sm" name="answer_four" placeholder="Enter Answer_4..." id="category_name">
                 </div>
                 <div class="form-group">
-                    <label for="answer_correct">Correct Answer<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control form-control-sm" name="answer_correct" placeholder="Enter Correct Answer..." id="category_name">
+                    <label for="correct_answer">Correct Answer<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" name="correct_answer" placeholder="Enter Correct Answer..." id="category_name">
                 </div>
                 <div class="form-group">
                     <label for="category_name">Category<span class="text-danger">*</span></label>
