@@ -47,6 +47,26 @@
                     <input type="text" class="form-control form-control-sm" name="question_name" placeholder="Enter Question..." id="category_name">
                 </div>
                 <div class="form-group">
+                    <label for="answer_one">Answer_1 <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" name="answer_one" placeholder="Enter Answer_1..." id="category_name">
+                </div>
+                <div class="form-group">
+                    <label for="answer_two">Answer_2<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" name="answer_two" placeholder="Enter Answer_2..." id="category_name">
+                </div>
+                <div class="form-group">
+                    <label for="answer_three">Answer_3<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" name="answer_three" placeholder="Enter Answer_3..." id="category_name">
+                </div>
+                <div class="form-group">
+                    <label for="answer_four">Answer_4<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" name="answer_four" placeholder="Enter Answer_4..." id="category_name">
+                </div>
+                <div class="form-group">
+                    <label for="answer_correct">Correct Answer<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" name="answer_correct" placeholder="Enter Correct Answer..." id="category_name">
+                </div>
+                <div class="form-group">
                     <label for="category_name">Category<span class="text-danger">*</span></label>
                     <select class="form-control form-control-sm" name="category_id" id="category_id">
                         <?php
